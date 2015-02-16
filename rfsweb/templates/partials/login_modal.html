@@ -1,0 +1,21 @@
+<form>
+    <div class="modal-header">
+        <h3>Login Required</h3>
+    </div>
+    <div class="modal-body">
+        <alert type="[[alert.type]]" ng-if="alert">
+            [[alert.msg]]
+        </alert>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" placeholder="Unix Username" ng-model="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Unix Password" ng-model="password">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="login()">Login</button>
+    </div>
+</form>

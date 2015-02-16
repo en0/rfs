@@ -1,0 +1,63 @@
+<h2>File Explorer</h2>
+<div class="well well-sm">
+<label>Path:</label><span ng-repeat="crumb in crumbs"> / <a href="#/fs/[[crumb.link]]">[[crumb.label]]</a></span>
+</div>
+<div class="btn-group">
+    <button class="btn btn-success btn-xs" ng-click="fsinfo(nodes.node_id);">
+        <span class="glyphicon glyphicon-eye-open">&nbsp;Info&nbsp;</span>
+    </button>
+    <button class="btn btn-xs btn-primary" ng-click="startUpload(nodes.node_id)">
+        <span class="glyphicon glyphicon-cloud-upload"></span>
+    </button>
+</div>
+<br />
+<br />
+<table class="table table-hover">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Mode</th>
+        <th>Access</th>
+        <th>Created</th>
+        <!--th>Last Accessed</th-->
+        <th>Last Modified</th>
+        <!--th>Size</th-->
+        <th></th>
+    </tr>
+    <tr ng-repeat="node in nodes.dirs">
+        <td><span class="glyphicon glyphicon-folder-open"></span></td>
+        <td><a href="#/fs/[[node.node_id]]">[[node.short_name]]</a></td>
+        <td>[[node.mode.label]]</td>
+        <td>[[node.owner]]:[[nodes.group]]</td>
+        <td>[[node.ctime | date:'medium']]</td>
+        <!--td>[[node.atime | date:'medium']]</td-->
+        <td>[[node.mtime | date:'medium']]</td>
+        <!--td>[[node.size]] KB</td-->
+        <td class="btn-group">
+            <button class="btn btn-success btn-xs" ng-click="fsinfo(node.node_id);">
+                <span class="glyphicon glyphicon-eye-open">&nbsp;Info&nbsp;</span>
+            </button>
+            <a class="btn btn-primary btn-xs" href="[[node._links_.download]]">
+                <span class="glyphicon glyphicon-cloud-download"></span>
+            </a>
+        </td>
+    </tr>
+    <tr ng-repeat="node in nodes.files">
+        <td><span class="glyphicon glyphicon-file"></span></td>
+        <td><a href="#/fscontent/[[node.mime_group]]/[[node.node_id]]">[[node.short_name]]</a></td>
+        <td>[[node.mode.label]]</td>
+        <td>[[node.owner]]:[[nodes.group]]</td>
+        <td>[[node.ctime | date:'medium']]</td>
+        <!--td>[[node.atime | date:'medium']]</td-->
+        <td>[[node.mtime | date:'medium']]</td>
+        <!--td>[[node.size]] KB</td-->
+        <td class="btn-group">
+            <button class="btn btn-success btn-xs" ng-click="fsinfo(node.node_id);">
+                <span class="glyphicon glyphicon-eye-open">&nbsp;Info&nbsp;</span>
+            </button>
+            <a class="btn btn-primary btn-xs" href="[[node._links_.download]]">
+                <span class="glyphicon glyphicon-cloud-download"></span>
+            </a>
+        </td>
+    </tr>
+</table>

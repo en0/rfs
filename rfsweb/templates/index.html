@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <!-- AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>	
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+        <script src="/static/js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+
+        <!-- Ace Editor -->
+        <script src="/static/js/ace.js"></script>
+        <script src="/static/js/mode-text.js"></script>
+        <script src="/static/js/theme-monokai.js"></script>
+
+        <!-- Application Specific -->
+        <link rel="stylesheet" href="/static/css/site.css">
+        <script src="/static/js/app.js"></script>
+        <script src="/static/js/controllers.js"></script>
+        <script src="/static/js/rfs-service.js"></script>
+    </head>
+
+    <body ng-app="theApp" ng-controller='rootCtrl'>
+        <div class='container'>
+            <div ng-view></div>
+        </div>
+    </body>
+
+</html>

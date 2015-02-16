@@ -1,0 +1,55 @@
+<form>
+<div class="modal-header">
+    <h3>Upload Content</h3>
+</div>
+<div class="modal-body">
+    <select class="form-control" ng-model="upload_type">
+        <optgroup label="Files">
+            <option value="nf">New File</option>
+            <option value="uf">Upload File</option>
+        </optgroup>
+        <optgroup label="Directory">
+            <option value="nd">Make Directory</option>
+            <option value="ud">Upload Directory</option>
+        </optgroup>
+    </select>
+    <div ng-if="upload_type == 'nf'" class="bs-callout bs-callout-warning">
+        <h4>Warning:</h4>
+        <p>This option will create a new file.</p>
+        <p><strong>If the file already exists, it will be truncated!</strong></p>
+    </div>
+    <div ng-if="upload_type == 'uf'" class="bs-callout bs-callout-warning">
+        <h4>Warning:</h4>
+        <p>This option will upload the specified local file to the server.</p>
+        <p><strong>If the file already exists on the server, it will be overwritten!</strong></p>
+    </div>
+    <div ng-if="upload_type == 'nd'" class="bs-callout bs-callout-info">
+        <h4>Info:</h4>
+        <p>This option will create a new directory.</p>
+        <p><strong>If the directory already exists, the operation will fail.</strong></p>
+    </div>
+    <div ng-if="upload_type == 'ud'" class="bs-callout bs-callout-danger">
+        <h4>Danger:</h4>
+        <p>This option will upload a tar (gz or bz2) file to the server and expand it on the server.</p>
+        <p><strong>If any directory or file that matches the target path already exists on the server, the target will be overwritten!</strong></p>
+    </div>
+    <div ng-if="upload_type == 'nf'">
+        <label for="file_name">Name:</label>
+        <input class="form-control" ng-model="name" placeholder="File Name">
+    </div>
+    <div ng-if="upload_type == 'nd'">
+        <label for="file_name">Name:</label>
+        <input class="form-control" ng-model="name" placeholder="Directory Name">
+    </div>
+    <div ng-if="upload_type == 'uf'">
+        <input class="form-control" ng-model="file" type="file">
+    </div>
+    <div ng-if="upload_type == 'ud'">
+        <input class="form-control" ng-model="file" type="file">
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="ok()">Ok</button>
+    <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
+</form>

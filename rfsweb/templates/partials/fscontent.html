@@ -1,0 +1,46 @@
+<div ng-if="type == 'image'">
+    <!-- Present Images -->
+    <h2>[[node.short_name]] <small>Image File</small></h2>
+    <image src="[[src]]" style="max-height: 100%; max-width: 100%" />
+</div>
+
+<div ng-if="type == 'audio'">
+    <!-- Present Audio -->
+    <h2>[[node.short_name]] <small>Audio File</small></h2>
+    <audio controls="controls" preload="auto" autoplay="autoplay" width="100%">
+        <source src="[[src]]">
+        Your browser does not support HTML5 video.
+    </audio>
+</div>
+
+<div ng-if="type == 'video'">
+    <!-- Present Video -->
+    <h2>[[node.short_name]] <small>Video File</small></h2>
+    <video controls="controls" autoplay="autoplay" width="100%">
+        <source src="[[src]]">
+        Your browser does not support HTML5 video.
+    </video>
+</div>
+
+<div ng-if="type == 'text'">
+    <!-- Present Text Editor -->
+    <div id="editor"></div>
+    <div id="editor_controls">
+        <button class="btn btn-xs btn-success">
+            <span class="glyphicon glyphicon-floppy-disk" onClick="alert('Not Implemented');">&nbsp;Save&nbsp;</span>
+        </button>
+    </div>
+</div>
+
+<div ng-if="type == 'application'">
+    <!-- Present Unknown -->
+    <h2>[[node.short_name]] <small>Unknown Type</small></h2>
+    <p>I don't know how to present this type.</p>
+    <label>Try Type:</label>
+    <div class="btn-group">
+        <button class="btn btn-default" ng-click="force_type('video');">Video</button>
+        <button class="btn btn-default" ng-click="force_type('audio');">Audio</button>
+        <button class="btn btn-default" ng-click="force_type('image');">Image</button>
+        <button class="btn btn-default" ng-click="force_type('text');">Text</button>
+    </div>
+</div>

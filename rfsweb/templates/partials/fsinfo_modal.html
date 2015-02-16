@@ -1,0 +1,40 @@
+
+<div class="modal-header">
+    <h2>Explorer Info</h2>
+</div>
+
+<div class="row modal-body">
+    <div class="col-md-6">
+        <dl>
+            <dt>Path</dt><dd>[[node.full_name]]</dd>
+            <dt>Name</dt><dd>[[node.short_name]]</dd>
+            <dt>Type</dt><dd>[[node.is_dir==true ? "Directory" : "File"]]</dd>
+            <dt>Access</dt><dd>[[node.owner]]:[[node.group]]</dd>
+            <dt>Perms</dt><dd>[[node.mode.label]]</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl>
+            <dt>Created</dt><dd>[[node.ctime | date:"medium"]]</dd>
+            <dt>Last Modified</dt><dd>[[node.mtime | date:"medium"]]</dd>
+            <dt>Last Accessed</dt><dd>[[node.atime | date:"medium"]]</dd>
+            <dt>Size</dt><dd>[[node.size]] KB</dd>
+            <dt ng-if="node.is_dir">Children</dt>
+            <dd ng-if="node.is_dir">[[node.dirs.length + node.files.length]]</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="btn-group pull-left">
+        <a class="btn btn-primary" href="[[node._links_.download]]" title="Download Node">
+            <span class="glyphicon glyphicon-cloud-download"></span>
+        </a>
+        <button class="btn btn-danger" title="Delete Node" onClick="alert('Not Implemented');">
+            <span class="glyphicon glyphicon-remove">&nbsp;Delete&nbsp;</span>
+        </button>
+    </div>
+    <button class="btn btn-success" ng-click="close()" title="Close Info">
+        <span class="glyphicon glyphicon-eye-close">&nbsp;Close&nbsp;</span>
+    </button>
+</div>
